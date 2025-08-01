@@ -51,3 +51,12 @@ async def read_user_item(
 async def read_user_item(item_id: str, needy: str):
     item = {"item_id": item_id, "needy": needy}
     return item
+
+
+# some parameters as required, some as having a default value, and some entirely optional
+@app.get("/items/{item_id}")
+async def read_user_item(
+    item_id: str, needy: str, skip: int = 0, limit: int | None = None
+):
+    item = {"item_id": item_id, "needy": needy, "skip": skip, "limit": limit}
+    return item
