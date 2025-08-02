@@ -11,7 +11,7 @@ class Item(BaseModel):
 
 app = FastAPI()
 
-
+# Declare it as a parameter
 @app.post("/items/")
 async def create_item(item: Item):
     return item
