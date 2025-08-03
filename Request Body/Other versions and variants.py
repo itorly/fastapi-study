@@ -17,3 +17,11 @@ app = FastAPI()
 @app.post("/items/")
 async def create_item(item: Item):
     return item
+
+# Request body + path + query parameters
+@app.put("/items/{item_id}")
+async def update_item(item_id: int, item: Item, q: Union[str, None] = None):
+    result = {"item_id": item_id, **item.dict()}
+    if q:
+        result.update({"q": q})
+    return result
